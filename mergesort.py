@@ -4,7 +4,7 @@ def mergesort(a):
 		return a
 	h1=mergesort(a[:l/2])
 	h2=mergesort(a[l/2:])
-	return merge(h1,h2)
+	return merge2(h1,h2)
 
 def merge(h1,h2):
 	r=[]
@@ -19,4 +19,21 @@ def merge(h1,h2):
 		r.extend(h2)
 	return r
 
-print mergesort([8,1,3,5,4,50,42,2])
+def merge2(h1,h2):
+	i=0
+	j=0
+	r=[]
+	while i<len(h1) and j<len(h2):
+		if h1[i] < h2[j]:
+			r.append(h1[i])
+			i+=1
+		else:
+			r.append(h2[j])
+			j+=1
+	if i< len(h1):
+		r.extend(h1[i:])
+	else:
+		r.extend(h2[j:])
+	return r	
+
+print mergesort([2,14,1,6,4,70,3])
