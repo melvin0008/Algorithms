@@ -1,4 +1,4 @@
-def countinversions(a):
+# def countinversions(a):
 	l=len(a)
 	if l <= 1:
 		return a,0
@@ -24,4 +24,4 @@ def merge_count(h1,h2,count):
 		r.extend(h2[j:])
 	return r,count	
 
-print countinversions([2,14,1,6,4,70,3])
+# print countinversions([2,14,1,6,4,70,3])

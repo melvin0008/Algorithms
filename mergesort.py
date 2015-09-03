@@ -36,4 +36,4 @@ def merge2(h1,h2):
 		r.extend(h2[j:])
 	return r	
 
-print mergesort([2,14,1,6,4,70,3])
+# print mergesort([2,14,1,6,4,70,3])

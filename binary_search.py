@@ -13,6 +13,6 @@ def binary_search(a,s):
 			return binary_search(a[(n/2)+1:],s)
 	return False
 
-print binary_search([5,20,1,8,25,80],7)
+# binary_search([5,20,1,8,25,80,15],18)
 
 

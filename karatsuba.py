@@ -10,6 +10,6 @@ def karatsuba(x,y):
 	return ((n**2)*z0)+(n*z2)+z1
 
 
-print karatsuba(5678,1234)
+# prriint karatsuba(5678,1234)
 
 	
