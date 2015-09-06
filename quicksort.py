@@ -4,7 +4,7 @@ def quicksort(a,start,end):
 	if start<end:
 		p=selectpivot(start,end)
 		if p != start:
-            a[p], a[start] = a[start], a[p]
+			a[p], a[start] = a[start], a[p]
 		newi=partition(a,start,end)
 		quicksort(a,start,newi-1)
 		quicksort(a,newi+1,end)
@@ -24,3 +24,4 @@ def selectpivot(s, e):
 
 arr=[2,5,7,3,8,1,4,6]
 quicksort(arr,0,len(arr)-1)
+print arr
