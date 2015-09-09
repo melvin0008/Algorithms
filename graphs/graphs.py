@@ -38,8 +38,11 @@ class Graph(object):
 		else:
 			return None
 
+	def numberVertices(self):
+		return self.numVertices
+
 	def hasVertex(self,vertex):
-		return vertex in vertices_list
+		return vertex in self.vertices_list
 
 	def getVertices(self):
 		return self.vertices_list.keys()
@@ -50,13 +53,25 @@ class Graph(object):
 		if vertex2 not in self.vertices_list:
 			self.addVertex(vertex2)
 		self.vertices_list[vertex1].addNeighbour(vertex2,weight)
+		if vertex1 != vertex2:
+			self.vertices_list[vertex2].addNeighbour(vertex1,weight)
 
 	def addEdges(self,edgesList):
 		for edge in edgesList:
-			self.addEdge(edge[0],edge[1],edge[2])
+			try:
+				self.addEdge(edge[0],edge[1],edge[2])
+			except IndexError:
+				self.addEdge(edge[0],edge[1],0)
 
 	def getEdges(self):
 		edgeList=[]
 		for vertex1,vertex2 in self.vertices_list.items():
 			print vertex1, vertex2.getConnections()
+
+	def getNeighbours(self,vertex):
+		if vertex in self.vertices_list:
+			return self.vertices_list[vertex].getConnections()
+		else:
+			raise Exception("Vertex doesnt exist")
+
 
