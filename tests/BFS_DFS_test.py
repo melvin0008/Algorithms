@@ -1,6 +1,6 @@
 import unittest
 from graphs.graphs import Graph
-from graphs.BFS import *
+from graphs.BFS_DFS import *
 
 class BFS_test(unittest.TestCase):
 	def setUp(self):
