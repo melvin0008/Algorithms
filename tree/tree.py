@@ -16,7 +16,31 @@ class BinaryTree():
 			self.insertLeft(item)
 		elif item > self.key:
 			self.insertRight(item)
+	
+	def height(self):
+		l,r=0,0
+		if not self.key:
+			return 0
+		if self.left:
+			l=self.left.height()
+		if self.right:
+			r=self.right.height()
+		return max(l,r)+1
 		
+		
+		return max(self.left.height(),self.right.height())+1
+				
+	def search(self,item):
+		if(item>self.key):
+			if not self.right:
+				return False
+			return self.right.search(item)
+		elif(item<self.key):
+			if not self.left:
+				return False
+			return self.left.search(item)
+		elif(item==self.key):
+			return True
 
 	def insertLeft(self,l):
 		if self.left==None:
@@ -115,5 +139,14 @@ class TreeCase(unittest.TestCase):
 		self.assertEqual(preorder(self.tree,[]),["a","b","d","c","e","f"])
 		self.assertEqual(postorder(self.tree,[]),["d","b","e","f","c","a"])
 		self.assertEqual(inorder(self.tree,[]),["b","d","a","e","c","f"])
+	
+	def test_search(self):
+		self.assertEqual(self.bst.search(30),True)
+		self.assertEqual(self.bst.search(15),False)
+
+	def test_height(self):
+		self.assertEqual(self.bst.height(),3)
+
+
 if __name__ == "__main__":
     unittest.main()
