@@ -17,18 +17,37 @@ class BinaryTree():
 		elif item > self.key:
 			self.insertRight(item)
 	
-	def height(self):
+	def checkheight(self):
 		l,r=0,0
 		if not self.key:
 			return 0
 		if self.left:
 			l=self.left.height()
+		else:
+			return -1
 		if self.right:
 			r=self.right.height()
+		else:
+			return -1
+		hdiff=abs(l-r)
+		if(hdiff>1):
+			return -1
 		return max(l,r)+1
+
+	def isbalanced(self):
+		if self.checkheight()==-1:
+			return False
+		return True
 		
-		
-		return max(self.left.height(),self.right.height())+1
+	def height(self):
+		l,r=0,0
+		if not self.key:
+			return 0
+		if self.left:
+			l = self.left.height()
+		if self.right:
+			r = self.right.height()
+		return max(l,r)+1
 				
 	def search(self,item):
 		if(item>self.key):
@@ -70,6 +89,17 @@ class BinaryTree():
 	def getRootVal(self):
 		return self.key
 
+	def createBSTsorted(arr):
+		return self.createBST(arr,0,len(arr)-1)
+
+	def createBST(arr,s,e):
+		if e>s:
+			return null
+		mid=(s+e)/2
+		t=BinaryTree(arr[mid])
+		t.left=createBST(arr[s:mid],s,mid)
+		t.right=createBST(arr[mid+1:e],mid+1,e)
+		return t
 
 def buildTree():
 	r=BinaryTree('a')
@@ -146,6 +176,7 @@ class TreeCase(unittest.TestCase):
 
 	def test_height(self):
 		self.assertEqual(self.bst.height(),3)
+		self.assertEqual(self.bst.isbalanced(),True)
 
 
 if __name__ == "__main__":
