@@ -101,6 +101,12 @@ class BinaryTree():
 		t.right=createBST(arr[mid+1:e],mid+1,e)
 		return t
 
+	def LCA(self,n1,n2):
+		if(self.key>n1 and self.key>n2):
+			return self.left.LCA(n1,n2)
+		if(self.key<n1 and self.key<n2):
+			return self.right.LCA(n1,n2)
+		return self.key
 def buildTree():
 	r=BinaryTree('a')
 	r.insertLeft('b')
@@ -178,6 +184,8 @@ class TreeCase(unittest.TestCase):
 		self.assertEqual(self.bst.height(),3)
 		self.assertEqual(self.bst.isbalanced(),True)
 
+	def test_LCA(self):
+		self.assertEqual(self.bst.LCA(30,10),20)
 
 if __name__ == "__main__":
     unittest.main()
