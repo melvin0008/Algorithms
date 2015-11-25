@@ -92,6 +92,7 @@ class BinaryTree():
 	def createBSTsorted(arr):
 		return self.createBST(arr,0,len(arr)-1)
 
+	#Create BST from sorted list
 	def createBST(arr,s,e):
 		if e>s:
 			return null
@@ -100,13 +101,24 @@ class BinaryTree():
 		t.left=createBST(arr[s:mid],s,mid)
 		t.right=createBST(arr[mid+1:e],mid+1,e)
 		return t
-
+	#Least Common Ancestor
 	def LCA(self,n1,n2):
 		if(self.key>n1 and self.key>n2):
 			return self.left.LCA(n1,n2)
 		if(self.key<n1 and self.key<n2):
 			return self.right.LCA(n1,n2)
 		return self.key
+	#Invert Tree
+	def invertTree(self):
+        	if not self.key:
+            		return None
+        	if self.left:
+            		self.left.invertTree()
+        	if root.right:
+            		self.right.invertTree()
+      		self.left,self.right=self.right,self.left
+
+
 def buildTree():
 	r=BinaryTree('a')
 	r.insertLeft('b')
